@@ -2,52 +2,36 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Base64.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract BlockgamesNFT is ERC721, Ownable {
+contract BlockgamesNFT is ERC721, ERC721URIStorage, Ownable {
+    using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter;
+
     constructor() ERC721("Blockgames NFT", "BGN") {}
 
-    function safeMint(address to, uint256 tokenId) public onlyOwner {
-        require (tokenId < 4, "Total NFT supply is 2");
+    function safeMint(address to, string memory uri) public onlyOwner {
+        uint256 tokenId = 1 + _tokenIdCounter.current();
+        _tokenIdCounter.increment();
         _safeMint(to, tokenId);
+        _setTokenURI(tokenId, uri);
     }
 
-    function tokenURI(uint256 tokenId)public pure override returns (string memory)
+    // The following functions are overrides required by Solidity.
+
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+        super._burn(tokenId);
+    }
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
     {
-        if (tokenId == 1) {
-        bytes memory dataURI = abi.encodePacked(
-            '{',
-                '"name": "Blockgames NFT #1"',
-                '"image": "https://ipfs.io/ipfs/QmTbqdG4hqjDQ8PcqrFicJnnahF4g8dnV6hFpDPSpwGy35"',
-                '"description": "Block games logo" ' '}'
-             );
-              return string(abi.encodePacked("data:application/json;base64,", Base64.encode(dataURI)));
-        }
-        if (tokenId ==2){
-                    bytes memory dataURI = abi.encodePacked(
-            '{',
-                '"name": "Blockgames NFT #2"',
-                '"image": "https://ipfs.io/ipfs/QmSD2jf7VQz7Vmieub8rJ2BmmEnQweNNjQMagcj2eswaHe"',
-                '"description": "Block games X Zuri Team"', '}'
-                       );
-              return string(abi.encodePacked("data:application/json;base64,", Base64.encode(dataURI)));
-        }
-        if (tokenId==3){
-                    bytes memory dataURI = abi.encodePacked(
-            '{',
-                '"name": "Blockgames NFT #3"',
-                '"image": "https://ipfs.io/ipfs/QmZnnqJuqhJNJe9toJFXpi7h6v2zaiejjw41yjJqeHrdey"',
-                '"description": "Block games logo.DEV"', '}'
-                       );
-              return string(abi.encodePacked("data:application/json;base64,", Base64.encode(dataURI)));
-        }
-        else{
-         string memory error= "invalide tokenId";
-         return error;
-        }
-
-       
+        return super.tokenURI(tokenId);
     }
-
 }
