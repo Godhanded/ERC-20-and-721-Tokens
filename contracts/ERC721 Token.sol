@@ -9,7 +9,7 @@ contract BlockgamesNFT is ERC721, Ownable {
     constructor() ERC721("Blockgames NFT", "BGN") {}
 
     function safeMint(address to, uint256 tokenId) public onlyOwner {
-        require (tokenId < 3, "Total NFT supply is 2");
+        require (tokenId < 4, "Total NFT supply is 2");
         _safeMint(to, tokenId);
     }
 
@@ -20,7 +20,7 @@ contract BlockgamesNFT is ERC721, Ownable {
             '{',
                 '"name": "Blockgames NFT #1"',
                 '"image": "https://ipfs.io/ipfs/QmTbqdG4hqjDQ8PcqrFicJnnahF4g8dnV6hFpDPSpwGy35"',
-                '"description": "block games logo" ' '}'
+                '"description": "Block games logo" ' '}'
              );
               return string(abi.encodePacked("data:application/json;base64,", Base64.encode(dataURI)));
         }
@@ -29,7 +29,16 @@ contract BlockgamesNFT is ERC721, Ownable {
             '{',
                 '"name": "Blockgames NFT #2"',
                 '"image": "https://ipfs.io/ipfs/QmSD2jf7VQz7Vmieub8rJ2BmmEnQweNNjQMagcj2eswaHe"',
-                '"description": "block games logo"', '}'
+                '"description": "Block games X Zuri Team"', '}'
+                       );
+              return string(abi.encodePacked("data:application/json;base64,", Base64.encode(dataURI)));
+        }
+        if (tokenId==3){
+                    bytes memory dataURI = abi.encodePacked(
+            '{',
+                '"name": "Blockgames NFT #3"',
+                '"image": "https://ipfs.io/ipfs/QmZnnqJuqhJNJe9toJFXpi7h6v2zaiejjw41yjJqeHrdey"',
+                '"description": "Block games logo.DEV"', '}'
                        );
               return string(abi.encodePacked("data:application/json;base64,", Base64.encode(dataURI)));
         }

@@ -576,11 +576,11 @@
 			]
 		},
 		"contracts/ERC721 Token.sol": {
-			"keccak256": "0x66e22757410475517632c529f10119653a0f1013dd6cc08eaaeecdae9be24a37",
+			"keccak256": "0xf36efc6a4bb31d9edc9fc3562e3941f6abba6bf9ac13d7c824230721f3924326",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://97441643f94f266edd1dd320f3121702edb1888131598b3c6a748bb8923aa991",
-				"dweb:/ipfs/QmQDuBCQj9WEwuBNjPwVnznvEDxZpPtTuFCHSpfdSxa99A"
+				"bzz-raw://dffa427a9a03fee743c2000c049f0354c82c3057a4b183adc14c7f65fbbf53aa",
+				"dweb:/ipfs/QmcN6NQe5V7DfFEcTg1moEFFkizJBGiuwdNiKcWJyG1oCS"
 			]
 		}
 	},
