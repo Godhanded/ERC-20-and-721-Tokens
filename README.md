@@ -11,7 +11,7 @@ ERC20 contract Address:
 https://rinkeby.etherscan.io/address/0xa25b7dbf46382f700a1f70be3b52cd74a8c7da2c#code
 
 ERC721 Contract Address:
-https://rinkeby.etherscan.io/address/0x059b9a77d488c3538700a8a506a17192e3599aea#code
+https://rinkeby.etherscan.io/address/0xfe116479da7d7df02a443d0da0d96129afc03d1a#code
 
 Metadata structure: {
                name : // Blockgames NFT #1
